@@ -5,7 +5,8 @@ import 'package:tarot_mini_app/models/meaning.dart';
 abstract class ArcanaCardData {
   int get id; // unique identifier
   String get title; // card title to show in thumbnails
-  String get imageUrl; // image URL for preview
+  String get imageUrl; // image URL
+  String get thumbnailUrl; // image URL for preview
   ArcanaType get arcana; // Type of Arcana
 }
 
@@ -15,6 +16,7 @@ abstract class FullCardData {
   int get deckId;
   String get name;
   String get imageUrl;
+  String get thumbnailUrl; // image URL for preview
   ArcanaType get arcana; // Type of Arcana
   List<CardMeaningRef> get meanings;
 }
@@ -27,6 +29,7 @@ class MajorCardDetail implements FullCardData {
   final int _id; // card ID
   final int deck; // deck ID
   final String image; // URL to card image
+  final String thumbnail; // image URL for preview
   final String _name; // localized card name
   final String orgname; // original name (e.g. French)
   final int number; // Major Arcana number (0-21)
@@ -36,6 +39,7 @@ class MajorCardDetail implements FullCardData {
     required  int id,
     required this.deck,
     required this.image,
+    required this.thumbnail,
     required String name,
     required this.orgname,
     required this.number,
@@ -48,6 +52,7 @@ class MajorCardDetail implements FullCardData {
         id: json['id'],
         deck: json['deck'],
         image: json['image'],
+        thumbnail: json['thumbnail'],
         name: json['name'],
         orgname: json['orgname'],
         number: json['number'],
@@ -65,6 +70,10 @@ class MajorCardDetail implements FullCardData {
   @override
   String get imageUrl => image;
   
+  /// Returns the thumbnail URL in the format required by [FullCardData]
+  @override
+  String get thumbnailUrl => thumbnail;
+
   @override
   int get id => _id;
   
@@ -83,6 +92,7 @@ class MinorCardDetail implements FullCardData {
   final int _id; // card ID
   final int deck; // deck ID
   final String image; // URL to card image
+  final String thumbnail; // image URL for preview
   final String _name; // card name
   final int rank; // card rank (e.g. 1 = Ace)
   final int suit; // card suit (e.g. 1 = Wands)
@@ -92,6 +102,7 @@ class MinorCardDetail implements FullCardData {
     required int id,
     required this.deck,
     required this.image,
+    required this.thumbnail,
     required String name,
     required this.rank,
     required this.suit,
@@ -106,6 +117,7 @@ class MinorCardDetail implements FullCardData {
         id: json['id'],
         deck: json['deck'],
         image: json['image'],
+        thumbnail: json['thumbnail'],
         name: json['name'],
         rank: json['rank'],
         suit: json['suit'],
@@ -123,6 +135,10 @@ class MinorCardDetail implements FullCardData {
   @override
   String get imageUrl => image;
   
+  /// Returns the thumbnail URL in the format required by [FullCardData]
+  @override
+  String get thumbnailUrl => thumbnail;
+
   @override
   int get id => _id;
   

@@ -25,7 +25,7 @@ class DeckCard extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(12),
           child: Image.network(
-            deck.image,
+            deck.thumbnail,
             fit: BoxFit.cover,
             errorBuilder: (_, __, ___) => const Icon(Icons.broken_image),
             loadingBuilder: (context, child, loadingProgress) {

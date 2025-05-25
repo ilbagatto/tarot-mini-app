@@ -7,6 +7,7 @@ class MajorCard implements ArcanaCardData {
   final String name;
   final String orgname;
   final String image;
+  final String thumbnail; // image URL for preview
   final int number;
 
   MajorCard({
@@ -14,6 +15,7 @@ class MajorCard implements ArcanaCardData {
     required this.name,
     required this.orgname,
     required this.image,
+    required this.thumbnail,
     required this.number
   }) : _id = id;
 
@@ -23,6 +25,7 @@ class MajorCard implements ArcanaCardData {
       name: json['name'],
       orgname: json['orgname'],
       image: json['image'],
+      thumbnail: json['thumbnail'],
       number: json['number']
     );
   }
@@ -35,6 +38,10 @@ class MajorCard implements ArcanaCardData {
 
   @override
   String get imageUrl => image;
+
+  /// Returns the thumbnail URL in the format required by [FullCardData]
+  @override
+  String get thumbnailUrl => thumbnail;
 
   @override
   ArcanaType get arcana => ArcanaType.major;

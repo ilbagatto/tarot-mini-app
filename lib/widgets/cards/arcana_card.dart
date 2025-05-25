@@ -30,7 +30,7 @@ class ArcanaCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                _ArcanaImage(imageUrl: card.imageUrl),
+                _ArcanaImage(imageUrl: card.thumbnailUrl),
                 const SizedBox(height: 4),
                 _ArcanaTitle(title: card.title),
               ],
